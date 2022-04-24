@@ -50,6 +50,13 @@ function HomePage() {
   const [operation, setOperation] = useState("");
 
   const handleSubmit = async (values, setFieldError) => {
+    setA(null)
+    setB(null)
+    setResult("")
+    setOperation("")
+    console.log(values["A"][values["A"].length-1]);
+    if(values["A"][values["A"].length-1]==",") return setFieldError("A","Remove the trailing comma")
+    if(values["B"][values["B"].length-1]==",") return setFieldError("B","Remove the trailing comma")
     let a = "{" + JSON.stringify(values["A"]) + "}";
     a = JSON.stringify(a).replaceAll('"', "").replaceAll("\\", "");
     let b = "{" + JSON.stringify(values["B"]) + "}";
